@@ -6,5 +6,5 @@ module.exports = function(app) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use('/api/user', register);
-  app.use('/api/auth', auth);
+  app.use('/api/login', auth);
 };

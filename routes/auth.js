@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   let user = await User.findOne({ email: req.body.email });
-  console.log('***********', user);
+  // console.log('***********', user);
 
   if (!user) return res.status(400).send('Invalid email or password');
 
@@ -19,12 +19,15 @@ router.post('/', async (req, res) => {
     req.body.password,
     user['password']
   );
-  console.log('password check ********', validPassword);
+  // console.log('password check ********', validPassword);
 
   if (!validPassword) return res.status(400).send('Invalid email or password');
   const token = user.generateAuthToken();
-
-  res.send(token);
+  // console.log(token.toString());
+  const payload = {
+    token
+  };
+  res.send(payload);
 });
 
 function validateUser(req) {
