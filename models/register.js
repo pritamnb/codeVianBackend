@@ -52,18 +52,5 @@ function validateUser(user) {
   return Joi.validate(user, schema);
 }
 
-async function insertUser() {
-  console.log('inserting');
-
-  const user = new User({
-    name: 'Pritam Bhalerao',
-    email: 'pritam@gmail.com',
-    password: 'pritam@123'
-  });
-  const result = await user.save();
-  console.log('**********', result);
-}
-// insertUser();
-
 exports.User = User;
 exports.validate = validateUser;
