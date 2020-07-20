@@ -5,14 +5,14 @@ const path = require('path');
 
 const dotenv = require('dotenv');
 
-console.log(dotenv);
 
 const app = express();
 
-// Import internal app dependencies 
-// const keys = require('./config/keys');
+dotenv.config();
 
-// console.log(keys);
+// Import internal app dependencies 
+const keys = require('./config/keys');
+
 
 // DB CONNECTION
 
@@ -34,9 +34,8 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 app.get('/', (req, res) => { res.send("App Working.....") });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+app.listen(keys.PORT);
 
-console.log(`Server is runnnig on port ${PORT}`);
+console.log(`Your port is ${keys.PORT}`);
 
 
