@@ -32,6 +32,13 @@ userSchema.methods.generateAuthToken = function () {
   );
   return token;
 };
+// userSchema.methods.generateAuthToken = function () {
+//   const token = jwt.sign(
+//     { _id: this._id, isAdmin: this.isAdmin },
+//     process.env.PRIVATE_KEY
+//   );
+//   return token;
+// };
 const User = mongoose.model('User', userSchema);
 
 function validateUser(user) {
