@@ -25,10 +25,17 @@ const userSchema = new mongoose.Schema({
   },
   isAdmin: Boolean,
 });
+// userSchema.methods.generateAuthToken = function () {
+//   const token = jwt.sign(
+//     { _id: this._id, isAdmin: this.isAdmin },
+//     config.get('jwtPrivateKey')
+//   );
+//   return token;
+// };
 userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     { _id: this._id, isAdmin: this.isAdmin },
-    config.get('jwtPrivateKey')
+    '5ttjPBipfDtn4Q3RFL8ODdNG79DsfND0'
   );
   return token;
 };

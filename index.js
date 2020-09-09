@@ -10,9 +10,9 @@ app.use(function (req, res, next) {
   );
   next();
 });
-require('./startup/config')();
+// require('./startup/config')();
 require('./startup/db')();
 require('./startup/routes')(app);
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => winston.info(`Listening on port ${port}...`));
