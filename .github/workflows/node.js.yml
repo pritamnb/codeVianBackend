@@ -26,23 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm audit
-#     - env:
-#         CI: true
-#         working-directory: index 
-  build:
-    needs: test
-    runs-on: ubuntu-latest
+    - env:
+        CI: true
+        working-directory: index 
 
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x]
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Build docker image
-      uses: actions/setup-node@v1
-      env: 
-        IMAGE_TAG: ${{ github.sha }}
-        
-    - run: | 
-        docker build -t "$GITHUB_REPOSITORY:$IMAGE_TAG"
